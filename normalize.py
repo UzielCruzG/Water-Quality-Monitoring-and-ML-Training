@@ -2,10 +2,10 @@ import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 
 # Leer el archivo CSV
-df = pd.read_csv('tu_archivo.csv')
+df = pd.read_csv("dataset/Datos_Sensores.csv")
 
 # Lista de columnas a normalizar
-columns_to_normalize = ['Temperatura', 'TDS', 'Turbidez', 'PH', 'Clase']
+columns_to_normalize = ['Temperatura', 'TDS', 'Turbidez', 'PH']
 
 # Inicializar el MinMaxScaler
 scaler = MinMaxScaler()
@@ -14,4 +14,4 @@ scaler = MinMaxScaler()
 df[columns_to_normalize] = scaler.fit_transform(df[columns_to_normalize])
 
 # Guardar los datos normalizados en un nuevo archivo CSV
-df.to_csv('datos_normalizados.csv', index=False)
+df.to_csv('dataset/normalized_data.csv', index=False)
