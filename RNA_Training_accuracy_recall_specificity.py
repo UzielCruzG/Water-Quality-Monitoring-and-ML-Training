@@ -9,7 +9,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 df = pd.read_csv('dataset/normalized_data.csv')
 
 # 'X' es el conjunto de características y 'y' es la variable objetivo.
-X = df[['Temperatura', 'TDS', 'Turbidez', 'pH']]
+X = df[['Temperatura', 'TDS', 'Turbidez', 'PH']]
 y = df['Clase']
 
 # Dividir los datos en conjuntos de entrenamiento y prueba
