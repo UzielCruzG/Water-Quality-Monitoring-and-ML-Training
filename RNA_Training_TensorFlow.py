@@ -36,7 +36,7 @@ model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=
 # Entrenar el modelo con un número mayor de épocas
 history = model.fit(X_train, y_train, epochs=100, batch_size=32, validation_data=(X_test, y_test), verbose=0)
 
-# Guardar el modelo entrenado en un archivo
+# Guardar el modelo entrenado en un archivo (formato Keras nativo)
 model.save('modelo_entrenado_TensorFlow.h5')
 
 # Realizar predicciones en el conjunto de prueba
@@ -55,3 +55,16 @@ plt.xlabel('Etiquetas predichas')
 plt.ylabel('Etiquetas verdaderas')
 plt.title('Matriz de Confusión')
 plt.show()
+
+# Calcular la sensibilidad y especificidad
+true_negatives = conf_matrix[0][0]
+false_positives = conf_matrix[0][1]
+false_negatives = conf_matrix[1][0]
+true_positives = conf_matrix[1][1]
+
+sensitivity = true_positives / (true_positives + false_negatives)
+specificity = true_negatives / (true_negatives + false_positives)
+
+print(f'Precisión del modelo: {accuracy * 100:.2f}%')
+print(f'Sensibilidad del modelo: {sensitivity * 100:.2f}%')
+print(f'Especificidad del modelo: {specificity * 100:.2f}%')
