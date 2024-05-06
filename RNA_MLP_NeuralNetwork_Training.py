@@ -20,7 +20,7 @@ model = MLPClassifier(hidden_layer_sizes=(4, 10, 10, 5), max_iter=1000, random_s
 model.fit(X_train, y_train)
 
 # Guardar el modelo entrenado en un archivo
-joblib.dump(model, 'models/modelo_entrenado.joblib')
+joblib.dump(model, 'models/modelo_entrenado_MLP.joblib')
 
 # Realizar predicciones
 y_pred = model.predict(X_test)

@@ -37,7 +37,7 @@ model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=
 history = model.fit(X_train, y_train, epochs=100, batch_size=32, validation_data=(X_test, y_test), verbose=0)
 
 # Guardar el modelo entrenado en un archivo (formato Keras nativo)
-model.save('models/modelo_entrenado_TensorFlow.h5')
+model.save('models/modelo_entrenado_Adam_TensorFlow.h5')
 
 # Realizar predicciones en el conjunto de prueba
 y_pred_prob = model.predict(X_test)
