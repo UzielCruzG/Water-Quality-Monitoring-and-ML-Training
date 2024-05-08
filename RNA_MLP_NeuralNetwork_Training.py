@@ -16,7 +16,7 @@ y = df['Clase']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.8, random_state=42)
 
 # Crear y entrenar la red neuronal
-model = MLPClassifier(hidden_layer_sizes=(4, 10, 10, 5), max_iter=1000, random_state=42, verbose=True)
+model = MLPClassifier(hidden_layer_sizes=(4, 10, 10, 5), max_iter=100 , random_state=42, verbose=True)
 model.fit(X_train, y_train)
 
 # Guardar el modelo entrenado en un archivo
