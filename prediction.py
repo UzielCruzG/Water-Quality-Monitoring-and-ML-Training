@@ -38,6 +38,41 @@ while True:
         # Imprimir la predicción
         print("Pertenece a la clase:", y_pred_loaded)
 
+# # Comunicación por bluetooth
+# import bluetooth
+
+# # Dirección MAC del dispositivo bluetooth
+# mac_address = "XX:XX:XX:XX:XX:XX"  # Reemplaza con la dirección MAC correcta
+
+# # Inicializar el socket
+# sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
+
+# # Conectar con el dispositivo
+# sock.connect((mac_address, 1))
+
+# while True:
+#     # Leer los datos del dispositivo bluetooth
+#     data = sock.recv(1024).decode().strip()
+
+#     # Si hay datos válidos
+#     if data:
+#         # Separar los valores y convertirlos en un array de numpy
+#         values = np.array(data.split(','), dtype=float).reshape(1, -1)
+
+#         # Crear un DataFrame temporal para aplicar la normalización
+#         df_temp = pd.DataFrame(values, columns=['Temperatura', 'TDS', 'Turbidez', 'PH'])
+
+#         # Aplicar la normalización a los datos
+#         values_normalized = scaler.fit_transform(df_temp)
+
+#         # Realizar la predicción con el modelo cargado
+#         y_pred_loaded = loaded_model.predict(values_normalized)
+
+#         # Imprimir la predicción
+#         print("Pertenece a la clase:", y_pred_loaded)
+
+# # Cerrar el socket
+# sock.close()
 
 '''
 import joblib
