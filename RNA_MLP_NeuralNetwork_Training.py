@@ -1,4 +1,8 @@
-#Este código entrena un modelo MLP con 3 variables objetivo y calcula la matriz de confusión, precisión, sensibilidad y especificidad para cada una de ellas. Además, visualiza la curva de pérdida durante el entrenamiento y las matrices de confusión para cada variable objetivo.
+# Este código entrena un modelo MLP con 3 variables objetivo y calcula la matriz de confusión,
+# precisión, sensibilidad y especificidad para cada una de ellas.
+# Además, visualiza la curva de pérdida durante el entrenamiento y
+# las matrices de confusión para cada variable objetivo.
+
 # Importar las bibliotecas necesarias
 import joblib
 import pandas as pd
@@ -9,7 +13,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix
 
 # Leer el archivo CSV
-df = pd.read_csv('dataset/new_normalized_data.csv')
+df = pd.read_csv('dataset/Categorias Discretas/normalized_data_cat.csv')
 
 # 'X' es el conjunto de características y 'y' son las variables objetivo.
 X = df[['Temperatura', 'TDS', 'Turbidez', 'PH']]
