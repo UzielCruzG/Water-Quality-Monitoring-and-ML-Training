@@ -20,4 +20,8 @@ Uso
 Requisitos del Entorno
 
     Python
-    Bibliotecas Python: Scikit-learn, TensorFlow, Pandas, NumPy, Matplotlib, Seaborn
+    Bibliotecas Python: Scikit-learn, TensorFlow, Pandas, NumPy, Matplotlib, Seaborn.
+
+    Para hacer uso de la libreria TensorFlow tomar en cuenta: 
+        1. Controladores de GPU NVIDIA®: CUDA® 11.2 requiere la versión 450.80.02 o una posterior.
+        2. En caso de usar CPU, TensorFlow usa operaciones vectoriales como SSE o AVX, así que debes tener una CPU compatible
