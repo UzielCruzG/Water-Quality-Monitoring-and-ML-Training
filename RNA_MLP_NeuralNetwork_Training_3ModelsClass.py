@@ -3,6 +3,7 @@
 # Además, visualiza la curva de pérdida durante el entrenamiento y
 # las matrices de confusión para cada variable objetivo.
 
+#20 entrenamiento,40prueba,40Validacion
 # Importar las bibliotecas necesarias
 import joblib
 import pandas as pd
@@ -22,12 +23,12 @@ y_consumo = df['Consumo_Humano']
 y_riego = df['Riego']
 
 # Dividir los datos en conjuntos de entrenamiento y prueba
-X_train, X_test, y_train_clase, y_test_clase, y_train_consumo, y_test_consumo, y_train_riego, y_test_riego = train_test_split(X, y_clase, y_consumo, y_riego, test_size=0.8, random_state=42)
+X_train, X_test, y_train_clase, y_test_clase, y_train_consumo, y_test_consumo, y_train_riego, y_test_riego = train_test_split(X, y_clase, y_consumo, y_riego, test_size=0.2, random_state=42)
 
 # Crear y entrenar la red neuronal para cada variable objetivo
-model_clase = MLPClassifier(hidden_layer_sizes=(4, 10, 10, 5), max_iter=100, random_state=42, verbose=True)
-model_consumo = MLPClassifier(hidden_layer_sizes=(4, 10, 10, 5), max_iter=100, random_state=42, verbose=True)
-model_riego = MLPClassifier(hidden_layer_sizes=(4, 10, 10, 5), max_iter=100, random_state=42, verbose=True)
+model_clase = MLPClassifier(hidden_layer_sizes=(4, 10, 10, 6), max_iter=100, random_state=42, verbose=True)
+model_consumo = MLPClassifier(hidden_layer_sizes=(4, 10, 10, 6), max_iter=100, random_state=42, verbose=True)
+model_riego = MLPClassifier(hidden_layer_sizes=(4, 10, 10, 6), max_iter=100, random_state=42, verbose=True)
 
 history_clase = model_clase.fit(X_train, y_train_clase)
 history_consumo = model_consumo.fit(X_train, y_train_consumo)
@@ -120,54 +121,3 @@ plt.ylabel('Real')
 
 plt.tight_layout()
 plt.show()
-
-
-#--------------------------------------------------------------------------------------------------------------------------
-#El siguiente codigo fue usado para entrenamiento de un modelo MLP usando solo 1 variable objetivo (clasificacion de tipo de agua)
-'''
-# Importar las bibliotecas necesarias
-import joblib
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.neural_network import MLPClassifier
-from sklearn.metrics import accuracy_score, confusion_matrix
-
-# Leer el archivo CSV
-df = pd.read_csv('dataset/normalized_data.csv')
-
-# 'X' es el conjunto de características y 'y' es la variable objetivo.
-X = df[['Temperatura', 'TDS', 'Turbidez', 'PH']]
-y = df['Clase']
-
-# Dividir los datos en conjuntos de entrenamiento y prueba
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.8, random_state=42)
-
-# Crear y entrenar la red neuronal
-model = MLPClassifier(hidden_layer_sizes=(4, 10, 10, 5), max_iter=100 , random_state=42, verbose=True)
-model.fit(X_train, y_train)
-
-# Guardar el modelo entrenado en un archivo
-joblib.dump(model, 'models/modelo_entrenado_MLP.joblib')
-
-# Realizar predicciones
-y_pred = model.predict(X_test)
-
-# Calcular la matriz de confusión
-conf_matrix = confusion_matrix(y_test, y_pred)
-
-# Calcular la precisión del modelo
-accuracy = accuracy_score(y_test, y_pred)
-
-# Calcular la sensibilidad y especificidad
-true_negatives = conf_matrix[0][0]
-false_negatives = conf_matrix[1][0]
-true_positives = conf_matrix[1][1]
-false_positives = conf_matrix[0][1]
-
-sensitivity = true_positives / (true_positives + false_negatives)
-specificity = true_negatives / (true_negatives + false_positives)
-
-print(f'Precisión del modelo: {accuracy * 100:.2f}%')
-print(f'Sensibilidad del modelo: {sensitivity * 100:.2f}%')
-print(f'Especificidad del modelo: {specificity * 100:.2f}%')
-'''
